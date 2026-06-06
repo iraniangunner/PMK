@@ -111,16 +111,6 @@ export default function ProductsPage() {
 
   const [filteredCategories, setFilteredCategories] = useState<Category[]>([]);
 
-  //   useEffect(() => {
-  //     if (!formData.brand_id) {
-  //       setFilteredCategories(categories);
-  //     } else {
-  //       setFilteredCategories(
-  //         categories.filter((c) => c.brand_id === Number(formData.brand_id))
-  //       );
-  //     }
-  //   }, [formData.brand_id, categories]);
-
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
   const paginated = filtered.slice(
     (page - 1) * ITEMS_PER_PAGE,
