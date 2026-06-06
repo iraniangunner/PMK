@@ -1,6 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL!;
@@ -69,4 +70,5 @@ export async function logoutAction() {
 
   c.delete("access_token");
   c.delete("refresh_token");
+  redirect("/");
 }

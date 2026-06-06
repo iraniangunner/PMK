@@ -13,7 +13,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-
 const yekanbakh = localFont({
   src: [
     {
@@ -62,11 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa">
-      <body
-       className={`${yekanbakh.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${yekanbakh.variable} antialiased`}>{children}</body>
     </html>
   );
 }

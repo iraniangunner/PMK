@@ -122,9 +122,11 @@ export default api;
 export const authAPI = {
   login: (email: string, password: string) =>
     api.post("/auth/login", { email, password }),
-  logout: () => api.post("/auth/logout", {}, { requiresAuth: true }),
+  logout: () =>
+    api.post("/auth/logout", {}, { requiresAuth: true }),
+  me: () =>
+    api.get("/auth/me", { requiresAuth: true }),
 };
-
 // Brands
 export const brandAPI = {
     getAll: () => api.get("/brands"),
