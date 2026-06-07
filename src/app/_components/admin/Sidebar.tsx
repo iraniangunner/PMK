@@ -13,6 +13,7 @@ import {
   HiOutlineExclamationCircle,
   HiOutlineClipboardList,
   HiOutlineChartBar,
+  HiOutlineMail,
   HiX,
   HiMenu,
   HiChevronRight,
@@ -20,42 +21,13 @@ import {
 
 const menuItems = [
   { path: "/admin", icon: HiOutlineHome, label: "داشبورد", group: null },
-  {
-    path: "/admin/brands",
-    icon: HiOutlineTag,
-    label: "برندها",
-    group: "محصولات",
-  },
-  {
-    path: "/admin/categories",
-    icon: HiOutlineFolder,
-    label: "دسته‌بندی‌ها",
-    group: "محصولات",
-  },
-  {
-    path: "/admin/products",
-    icon: HiOutlineCube,
-    label: "محصولات",
-    group: "محصولات",
-  },
-  {
-    path: "/admin/damage-forms",
-    icon: HiOutlineExclamationCircle,
-    label: "فرم خسارت",
-    group: "فرم‌ها",
-  },
-  {
-    path: "/admin/complaint-forms",
-    icon: HiOutlineClipboardList,
-    label: "فرم شکایات",
-    group: "فرم‌ها",
-  },
-  {
-    path: "/admin/survey-forms",
-    icon: HiOutlineChartBar,
-    label: "نظرسنجی",
-    group: "فرم‌ها",
-  },
+  { path: "/admin/brands", icon: HiOutlineTag, label: "برندها", group: "محصولات" },
+  { path: "/admin/categories", icon: HiOutlineFolder, label: "دسته‌بندی‌ها", group: "محصولات" },
+  { path: "/admin/products", icon: HiOutlineCube, label: "محصولات", group: "محصولات" },
+  { path: "/admin/damage-forms", icon: HiOutlineExclamationCircle, label: "فرم خسارت", group: "فرم‌ها" },
+  { path: "/admin/complaint-forms", icon: HiOutlineClipboardList, label: "فرم شکایات", group: "فرم‌ها" },
+  { path: "/admin/survey-forms", icon: HiOutlineChartBar, label: "نظرسنجی", group: "فرم‌ها" },
+  { path: "/admin/contacts", icon: HiOutlineMail, label: "تماس با ما", group: "پیام‌ها" },
 ];
 
 const grouped = menuItems.reduce((acc, item) => {
@@ -65,7 +37,7 @@ const grouped = menuItems.reduce((acc, item) => {
   return acc;
 }, {} as Record<string, typeof menuItems>);
 
-const groupOrder = ["__root__", "محصولات", "فرم‌ها"];
+const groupOrder = ["__root__", "محصولات", "فرم‌ها", "پیام‌ها"];
 
 interface SidebarContentProps {
   pathname: string;
@@ -78,10 +50,7 @@ function SidebarContent({ pathname, onClose }: SidebarContentProps) {
       <div className="flex items-center justify-between h-16 px-5 border-b border-gray-800 flex-shrink-0">
         <h1 className="text-lg font-bold text-white">PMK Admin</h1>
         {onClose && (
-          <button
-            onClick={onClose}
-            className="lg:hidden p-1.5 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
-          >
+          <button onClick={onClose} className="lg:hidden p-1.5 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">
             <HiX className="w-5 h-5" />
           </button>
         )}
@@ -116,9 +85,7 @@ function SidebarContent({ pathname, onClose }: SidebarContentProps) {
                   >
                     <item.icon className="w-5 h-5 flex-shrink-0" />
                     <span>{item.label}</span>
-                    {isActive && (
-                      <HiChevronRight className="w-4 h-4 mr-auto opacity-70" />
-                    )}
+                    {isActive && <HiChevronRight className="w-4 h-4 mr-auto opacity-70" />}
                   </Link>
                 );
               })}
@@ -129,10 +96,7 @@ function SidebarContent({ pathname, onClose }: SidebarContentProps) {
 
       <div className="p-3 border-t border-gray-800 flex-shrink-0">
         <form action={logoutAction}>
-          <button
-            type="submit"
-            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-gray-800 hover:text-white w-full transition-all text-sm"
-          >
+          <button type="submit" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-gray-800 hover:text-white w-full transition-all text-sm">
             <HiOutlineLogout className="w-5 h-5 flex-shrink-0" />
             <span>خروج از پنل</span>
           </button>
@@ -146,16 +110,12 @@ export default function Sidebar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  useEffect(() => { setOpen(false); }, [pathname]);
 
   useEffect(() => {
     if (open) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
   return (
@@ -172,19 +132,10 @@ export default function Sidebar() {
       </button>
 
       {open && (
-        <div
-          className="lg:hidden fixed inset-0 z-50 flex justify-end"
-          dir="rtl"
-        >
-          <div
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={() => setOpen(false)}
-          />
+        <div className="lg:hidden fixed inset-0 z-50 flex justify-end" dir="rtl">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
           <div className="relative w-72 max-w-[85vw] h-full bg-gray-900 flex flex-col shadow-2xl">
-            <SidebarContent
-              pathname={pathname}
-              onClose={() => setOpen(false)}
-            />
+            <SidebarContent pathname={pathname} onClose={() => setOpen(false)} />
           </div>
         </div>
       )}
