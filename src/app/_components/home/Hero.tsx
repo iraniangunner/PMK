@@ -19,9 +19,6 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text */}
           <div className="space-y-6 text-right">
-            <div className="inline-block bg-red-900/40 border border-red-700/50 rounded-full px-4 py-1.5">
-              <span className="text-red-300 text-sm font-medium">نماینده رسمی MAXELL در ایران</span>
-            </div>
             <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
               پخش و توزیع
               <span className="text-red-400 block mt-1">انواع لاستیک</span>

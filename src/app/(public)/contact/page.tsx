@@ -16,13 +16,13 @@ const contactInfo = [
   {
     icon: HiPhone,
     label: "تلفن",
-    value: "021-XXXXXXXX",
-    href: "tel:021XXXXXXXX",
+    value: "021-22252875",
+    href: "tel:02122252875",
   },
   {
     icon: HiLocationMarker,
     label: "آدرس",
-    value: "تهران، ایران",
+    value: "تهران، میرداماد، میدان مادر، خیابان سنجابی، کوچه شریفی پلاک 6، واحد 2",
     href: null,
   },
 ];
