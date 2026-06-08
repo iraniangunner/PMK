@@ -47,7 +47,7 @@ export default function Hero() {
           <div className="flex justify-center">
             <div className="relative w-80 h-80">
               <Image
-                src="/images/pmk.png"
+                src="/images/tire.png"
                 alt="PMK Tire"
                 fill
                 className="object-contain drop-shadow-2xl"
